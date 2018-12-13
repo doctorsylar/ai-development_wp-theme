@@ -39,7 +39,7 @@ $(function () {
     });
     // scroll events:
     // 1. Home background smooth scrolling
-    windowVar.scroll(function (event) {
+    windowVar.scroll(function () {
         let scrollPos = jsWindow.scrollY;
         if (scrollPos < windowHeight && jsWindow.innerWidth > 360) {
             $('#home').css('background-position-y', scrollPos / -5);
@@ -48,7 +48,6 @@ $(function () {
             prevScrollPos = scrollPos;
             //  Menu items highlighting
             let underHeaderScroll = scrollPos + 77;
-            // $('.header-menu ul li a').removeClass('active');
             if (underHeaderScroll < servicesPos) {
                 $('.link-home').addClass('active');
                 $('.link-home').siblings().removeClass('active');
@@ -110,7 +109,6 @@ $(function () {
                 }
             }
         }
-
     });
     // Menu toggler
     $('.menu-toggler > i').click(function () {
@@ -138,10 +136,11 @@ $(function () {
         $('.overlay').fadeOut(0);
     });
 
-//    Portfolio fullimages
+//    Portfolio full images
     $('.portfolio-item-inner').click(function () {
         $('.overlay, .close-modal').show(0);
         let clicked = $(this.children[1]);
+        makeBackground(clicked);
         clicked.fadeIn(300, () => {
             if ($('body').width() >= 992) {
                 setTimeout(() => {
@@ -164,7 +163,6 @@ $(function () {
         let name = event.target[0].value.trim();
         let email = event.target[1].value.trim();
         let message = event.target[2].value.trim();
-        // console.log(event.target.action);
         if (name !== '' && email !== '' && message !== '') {
             $.ajax(event.target.action, {
                 data: {
@@ -188,88 +186,77 @@ $(function () {
             }
         }
     });
-
-
-//    JS fullscreen pictures code
-    function makeBackground() {
-        let divsArray = document.querySelectorAll('.fullscreen-picture');
-        for (let div of divsArray) {
-            div.children[0].setAttribute('src', div.children[0].getAttribute('data-src'));
-            div.children[0].removeAttribute('data-src');
-            let string = "url('" + div.children[0].getAttribute('src') + "') no-repeat top center";
-            div.style.background = string;
-            // div.style.color = 'red';
-        }
-    }
-    makeBackground();
-
-    // script for filling skills section
-    function fillSkills() {
-        let skillsList = [
-            { name: 'HTML 5',
-                pictureUrl: 'https://www.w3.org/html/logo/downloads/HTML5_Badge.svg',
-                level: ['95'],
-                description: 'Стандартизированный язык разметки документов в интернете'
-            },
-            { name: 'CSS 3',
-                pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/css-logo.svg',
-                level: ['90'],
-                description: 'Язык описания внешнего вида документа'
-            },
-            { name: 'JavaScript ES6',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
-                level: ['95'],
-                description: 'Язык программирования высокого уровня, использующийся для придания интерактивности веб-страницам'
-            },
-            { name: 'jQuery',
-                pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/jquery.svg',
-                level: ['85'],
-                description: 'Библиотека JavaScript, делающая взаимодействие с визуальными составляющими страницы более удобным'
-            },
-            { name: 'Bootstrap 4',
-                pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/bootstrap.svg',
-                level: ['80'],
-                description: 'Библиотека, содержащая значительное количество готовых решений как для визуального оформления элементов веб-страницы, так и для создания интерактивности'
-            },
-            { name: 'React',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
-                level: ['75'],
-                description: 'JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов'
-            },
-            { name: 'VueJS',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg',
-                level: ['60'],
-                description: 'JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов'
-            },
-            { name: 'PHP7',
-                pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/php.svg',
-                level: ['70'],
-                description: 'Наиболее часто применяемый язык программирования для разработки серверной части веб-сайтов и веб-приложений'
-            },
-            { name: 'NodeJS',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
-                level: ['80'],
-                description: 'Программная платформа, позволяющая использовать JavaScript как язык общего назначения вне окна браузера'
-            },
-            { name: 'Webpack',
-                pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/webpack.svg',
-                level: ['75'],
-                description: 'Наиболее мощный инструмент для проведения \"сборки\" frontend\'а веб-сайтов'
-            },
-            { name: 'Babel',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Babel_Logo.svg',
-                level: ['90'],
-                description: 'Компилятор JavaScript с открытым исходным кодом и настраиваемый транспилятор, используемый в веб-разработке'
-            },
-            { name: 'Wordpress',
-                pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Wordpress-Logo.svg',
-                level: ['60'],
-                description: 'Самая популярная система управления контентом для веб-сайтов'
-            },
-        ];
-        let skillsContainer = $('.skills-container');
-        for (let skill of skillsList) {
-            let code = `
+    // preloader hiding
+    $('.preloader').fadeOut(0);
+    //    meh
+});
+// script for filling skills section
+function fillSkills() {
+    let skillsList = [
+        { name: 'HTML 5',
+            pictureUrl: 'https://www.w3.org/html/logo/downloads/HTML5_Badge.svg',
+            level: ['95'],
+            description: 'Стандартизированный язык разметки документов в интернете'
+        },
+        { name: 'CSS 3',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/css-logo.svg',
+            level: ['90'],
+            description: 'Язык описания внешнего вида документа'
+        },
+        { name: 'JavaScript ES6',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
+            level: ['95'],
+            description: 'Язык программирования высокого уровня, использующийся для придания интерактивности веб-страницам'
+        },
+        { name: 'jQuery',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/jquery.svg',
+            level: ['85'],
+            description: 'Библиотека JavaScript, делающая взаимодействие с визуальными составляющими страницы более удобным'
+        },
+        { name: 'Bootstrap 4',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/bootstrap.svg',
+            level: ['80'],
+            description: 'Библиотека, содержащая значительное количество готовых решений как для визуального оформления элементов веб-страницы, так и для создания интерактивности'
+        },
+        { name: 'React',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
+            level: ['75'],
+            description: 'JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов'
+        },
+        { name: 'VueJS',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg',
+            level: ['60'],
+            description: 'JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов'
+        },
+        { name: 'PHP7',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/php.svg',
+            level: ['70'],
+            description: 'Наиболее часто применяемый язык программирования для разработки серверной части веб-сайтов и веб-приложений'
+        },
+        { name: 'NodeJS',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
+            level: ['80'],
+            description: 'Программная платформа, позволяющая использовать JavaScript как язык общего назначения вне окна браузера'
+        },
+        { name: 'Webpack',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/webpack.svg',
+            level: ['75'],
+            description: 'Наиболее мощный инструмент для проведения \"сборки\" frontend\'а веб-сайтов'
+        },
+        { name: 'Babel',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Babel_Logo.svg',
+            level: ['90'],
+            description: 'Компилятор JavaScript с открытым исходным кодом и настраиваемый транспилятор, используемый в веб-разработке'
+        },
+        { name: 'Wordpress',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Wordpress-Logo.svg',
+            level: ['60'],
+            description: 'Самая популярная система управления контентом для веб-сайтов'
+        },
+    ];
+    let skillsContainer = $('.skills-container');
+    for (let skill of skillsList) {
+        let code = `
             <div class="skill-item animatedIn">
                 <img src="${skill.pictureUrl}" alt="${skill.name}">
                 <div class="skill-description">
@@ -284,10 +271,17 @@ $(function () {
                 </div>
             </div>
             `;
-            skillsContainer.append(code);
-        }
+        skillsContainer.append(code);
     }
-    // preloader hiding
-    $('.preloader').fadeOut(0);
-    //    meh
-});
+}
+//    JS fullscreen pictures code
+function makeBackground(image) {
+    image = image[0];
+    let picture = image.children[0];
+    if (picture.getAttribute('src') === '') {
+        picture.setAttribute('src', picture.getAttribute('data-src'));
+        picture.removeAttribute('data-src');
+        let string = "url('" + picture.getAttribute('src') + "') no-repeat top center";
+        image.style.background = string;
+    }
+}
