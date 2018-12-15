@@ -208,7 +208,8 @@ header .header-menu.horizontal-menu li {
 header .header-menu.horizontal-menu li a {
     transition: color 0.3s linear;
 }
-header .header-menu.horizontal-menu li a:hover {
+header .header-menu.horizontal-menu li a:hover,
+header .header-menu.horizontal-menu li a:active{
     color: #7c188b;
 }
 header .header-menu.horizontal-menu li a i {
@@ -499,7 +500,8 @@ main {
     border-bottom: 1px dashed #aaaaaa;
     margin: 15px;
 }
-#portfolio .portfolio-item .fullscreen-picture .picture-text a:hover {
+#portfolio .portfolio-item .fullscreen-picture .picture-text a:hover,
+#portfolio .portfolio-item .fullscreen-picture .picture-text a:active {
     color: #ffffff;
     border-bottom: none;
 }
@@ -701,7 +703,8 @@ footer .socials i {
     transition: 0.4s;
     text-align: center;
 }
-footer .socials i:hover {
+footer .socials i:hover,
+footer .socials i:active {
     opacity: 1;
 }
 footer .copyright {
@@ -714,7 +717,8 @@ footer .copyright a {
     color: #ff641e;
     transition: 0.4s all;
 }
-footer .copyright a:hover {
+footer .copyright a:hover,
+footer .copyright a:active {
     color: #ffffff;
     border-bottom: none;
 }
