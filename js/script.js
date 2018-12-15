@@ -12,9 +12,6 @@ $(function () {
     let contactPos = $('#contact').offset().top;
     let prevScrollPos = 0;
 
-    // Place to make script for showing divs after loading page
-    windowVar.one('load', function () {
-    });
 
     windowVar.one('scroll', function () {
         windowHeight = jsWindow.innerHeight;
@@ -77,42 +74,8 @@ $(function () {
                 $('.link-contact').siblings().removeClass('active');
             }
         }
-        let animatedArray = $('.animatedIn');
-        if (animatedArray.length > 0) {
-            for (let i = 0; i < animatedArray.length; i++) {
-                let animatedItem = $(animatedArray[i]);
-                if (animatedItem.offset().top < scrollPos + windowHeight - 100) {
-                    if (animatedItem.hasClass('toFadeInLeft')) {
-                        animatedItem.addClass('fadeInLeft');
-                        animatedItem.removeClass('toFadeInLeft');
-                        setTimeout(function () {
-                            animatedItem.removeClass('fadeInLeft');
-                            animatedItem.css('opacity', '1');
-                        }, 1000);
-                    }
-                    else if (animatedItem.hasClass('toFadeInRight')) {
-                        animatedItem.addClass('fadeInRight');
-                        animatedItem.removeClass('toFadeInRight');
-                        setTimeout(function () {
-                            animatedItem.removeClass('fadeInRight');
-                            animatedItem.css('opacity', '1');
-                        }, 1000);
-                    }
-                    else {
-                        animatedItem.addClass('fadeInBottom');
-                        animatedItem.removeClass('toFadeInBottom');
-                        setTimeout(function () {
-                            animatedItem.removeClass('fadeInBottom');
-                            animatedItem.css('opacity', '1');
-                        }, 1000);
-                    }
-                    animatedItem.removeClass('animatedIn');
-                }
-                else {
-                    break;
-                }
-            }
-        }
+        revealBlocks (scrollPos);
+
     });
     // Menu toggler
     $('.menu-toggler > i').click(function () {
@@ -193,6 +156,47 @@ $(function () {
     // preloader hiding
     $('.preloader').fadeOut(0);
     //    meh
+    // function for revealing blocks
+    function revealBlocks (screenPos) {
+        let animatedArray = $('.animatedIn');
+        if (animatedArray.length > 0) {
+            for (let i = 0; i < animatedArray.length; i++) {
+                let animatedItem = $(animatedArray[i]);
+                if (animatedItem.offset().top < screenPos + windowHeight - 100) {
+                    if (animatedItem.hasClass('toFadeInLeft')) {
+                        animatedItem.addClass('fadeInLeft');
+                        animatedItem.removeClass('toFadeInLeft');
+                        setTimeout(function () {
+                            animatedItem.removeClass('fadeInLeft');
+                            animatedItem.css('opacity', '1');
+                        }, 1000);
+                    }
+                    else if (animatedItem.hasClass('toFadeInRight')) {
+                        animatedItem.addClass('fadeInRight');
+                        animatedItem.removeClass('toFadeInRight');
+                        setTimeout(function () {
+                            animatedItem.removeClass('fadeInRight');
+                            animatedItem.css('opacity', '1');
+                        }, 1000);
+                    }
+                    else {
+                        animatedItem.addClass('fadeInBottom');
+                        animatedItem.removeClass('toFadeInBottom');
+                        setTimeout(function () {
+                            animatedItem.removeClass('fadeInBottom');
+                            animatedItem.css('opacity', '1');
+                        }, 1000);
+                    }
+                    animatedItem.removeClass('animatedIn');
+                }
+                else {
+                    break;
+                }
+            }
+        }
+    }
+    // Place to make script for showing divs after loading page
+    revealBlocks (jsWindow.scrollY);
 });
 // script for filling skills section
 function fillSkills() {
