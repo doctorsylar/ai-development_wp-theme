@@ -12,6 +12,10 @@ $(function () {
     let contactPos = $('#contact').offset().top;
     let prevScrollPos = 0;
 
+    // Place to make script for showing divs after loading page
+    windowVar.one('load', function () {
+    });
+
     windowVar.one('scroll', function () {
         windowHeight = jsWindow.innerHeight;
         servicesPos = $('#services').offset().top;

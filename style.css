@@ -199,8 +199,9 @@ header .vertical-menu a:hover {
 header .vertical-menu li.active a:hover {
     color: #ffffff;
 }
-header .header-menu.horizontal-menu {
-
+header .header-container .header-menu.horizontal-menu ul li.link-home a,
+header .header-menu.vertical-menu ul li.link-home a {
+    color: green;
 }
 header .header-menu.horizontal-menu li {
     margin-right: 15px;
