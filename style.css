@@ -25,6 +25,8 @@ html, body {
 }
 body {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 a {
     text-decoration: none;
@@ -82,6 +84,9 @@ div.fadeInBottom {
 }
 div.fadeInRight {
     animation: fadeInOwn 1s forwards, fadeInRightOwn 1s forwards;
+}
+main {
+    flex-grow: 1;
 }
 /* HOME */
 .home {

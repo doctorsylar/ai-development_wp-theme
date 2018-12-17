@@ -8,7 +8,7 @@
         <li><a href="tg://resolve?domain=DoctorSdoctor"><i class="fa fa-telegram"></i></a></li>
     </ul>
     <div class="copyright">
-        © 2018 Andrey Izotov | Inspired by <a href="https://scripteden.com" target="_blank">scripteden</a>
+        © 2018 Andrey Izotov
     </div>
 </footer>
 

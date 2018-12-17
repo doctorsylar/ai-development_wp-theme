@@ -4,6 +4,8 @@ Template Name: blog
 */
 ?>
 <?php get_header(); ?>
-<?='blog'?>
+<main>
+    blog
+</main>
 
 <?php get_footer(); ?>
