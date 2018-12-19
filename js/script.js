@@ -202,7 +202,7 @@ $(function () {
 function fillSkills() {
     let skillsList = [
         { name: 'HTML 5',
-            pictureUrl: 'https://www.w3.org/html/logo/downloads/HTML5_Badge.svg',
+            pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/html5.svg',
             level: ['95'],
             description: 'Стандартизированный язык разметки документов в интернете'
         },
