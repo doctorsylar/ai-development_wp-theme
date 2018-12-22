@@ -239,7 +239,7 @@ function register_post_types(){
 
 function getPortfolioItems () {
     $args = array(
-        'numberposts' => -1,
+        'numberposts' => 8,
         'orderby'     => 'date',
         'order'       => 'DESC',
         'post_type'   => 'portfolio_item',
