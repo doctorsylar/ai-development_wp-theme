@@ -1,5 +1,5 @@
 <footer>
-    <ul class="socials">
+    <ul class="socials-links">
         <li><a href="#"><i class="fa fa-vk"></i></a></li>
         <li><a href="mailto:soul.evans.15@gmail.com"><i class="fa fa-google"></i></a></li>
         <li><a href="https://freelance.ru/doctorsylar" target="_blank"><i style="font-style: normal">FL</i></a></li>

@@ -687,14 +687,14 @@ footer {
     color: #ffffff;
     padding: 15px 0;
 }
-footer .socials {
+footer .socials-links {
     justify-content: center;
     padding: 0 10px 10px;
     list-style: none;
     display: flex;
 
 }
-footer .socials i {
+footer .socials-links i {
     display: inline-block;
     width: 44px;
     height: 44px;
@@ -708,8 +708,8 @@ footer .socials i {
     transition: 0.4s;
     text-align: center;
 }
-footer .socials i:hover,
-footer .socials i:active {
+footer .socials-links i:hover,
+footer .socials-links i:active {
     opacity: 1;
 }
 footer .copyright {
