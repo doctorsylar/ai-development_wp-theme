@@ -297,6 +297,9 @@ main {
 #services .services-container .services-fullstack .images i:last-child {
     color: darkviolet;
 }
+#services .services-container .services-seo .images i {
+    color: green;
+}
 #services .services-container .services-item .services-description {
     line-height: 1.4em;
 }

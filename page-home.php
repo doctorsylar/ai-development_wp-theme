@@ -83,7 +83,7 @@ Template Name: home
                     эффективности и производительности.
                 </p>
             </div>
-            <div class="services-fullstack services-item animatedIn toFadeInRight">
+            <div class="services-fullstack services-item animatedIn">
                 <div class="images">
                     <i class="fa fa-laptop"></i>
                     <i class="fa fa-cogs"></i>
@@ -95,6 +95,19 @@ Template Name: home
                     Создание полноценных сайтов и веб-приложений, включающих себя
                     пользовательский интерфейс,
                     сложную бизнес логику и высокопроизводительные серверные скрипты.
+                </p>
+            </div>
+            <div class="services-seo services-item animatedIn toFadeInRight">
+                <div class="images">
+                    <i class="fa fa-bar-chart"></i>
+                </div>
+                <h3 class="services-title">
+                    SEO
+                </h3>
+                <p class="services-description">
+                    Оптимизация структуры сайта для лучшей его обработки поисковыми
+                    системами, что впоследствии улучшает его позиции в поисковой
+                    выдаче, ускоряя развитие и увеличивая посещаемость.
                 </p>
             </div>
         </div>
