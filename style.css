@@ -615,7 +615,7 @@ main {
 }
 #about .photo-area img {
     border-radius: 50%;
-    max-width: 260px;
+    max-width: 200px;
     margin: 20px auto;
 }
 #about .text-area {
@@ -805,6 +805,9 @@ body > .close-modal {
     }
     #about .info .photo-area {
         width: 50%;
+    }
+    #about .photo-area img {
+        max-width: 260px;
     }
     #about .info .text-area {
         width: 40%;
