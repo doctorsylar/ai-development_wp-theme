@@ -153,8 +153,6 @@ $(function () {
             }
         }
     });
-    // preloader hiding
-    $('.preloader').fadeOut(0);
     //    meh
     // function for revealing blocks
     function revealBlocks (screenPos) {
