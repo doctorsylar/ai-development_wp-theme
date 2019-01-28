@@ -42,9 +42,6 @@ div.fadeInBottom {
 div.fadeInRight {
     animation: fadeInOwn 1s forwards, fadeInRightOwn 1s forwards;
 }
-main {
-    flex-grow: 1;
-}
 /* HOME */
 .home {
     position: relative;
@@ -131,7 +128,7 @@ header .header-logo img {
     transition: 0.5s all;
 }
 header .header-logo:hover img {
-    fill: #541863 !important;
+    fill: #762da9 !important;
 }
 header .header-menu {
     display: none;
@@ -172,7 +169,7 @@ header .header-menu.horizontal-menu li a {
 }
 header .header-menu.horizontal-menu li a:hover,
 header .header-menu.horizontal-menu li a:active{
-    color: #7c188b;
+    color: #762da9;
 }
 header .header-menu.horizontal-menu li a i {
     margin-right: 3px;
@@ -246,13 +243,13 @@ main {
     color: dodgerblue;
 }
 #services .services-container .services-backend .images i {
-    color: darkviolet;
+    color: #762da9;
 }
 #services .services-container .services-fullstack .images i:first-child {
     color: dodgerblue;
 }
 #services .services-container .services-fullstack .images i:last-child {
-    color: darkviolet;
+    color: #762da9;
 }
 #services .services-container .services-seo .images i {
     color: green;
