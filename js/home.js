@@ -209,7 +209,7 @@ function fillSkills() {
             level: ['90'],
             description: 'Язык описания внешнего вида документа'
         },
-        { name: 'JavaScript ES6',
+        { name: 'JavaScript ES6+',
             pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
             level: ['95'],
             description: 'Язык программирования высокого уровня, использующийся для придания интерактивности веб-страницам'
@@ -226,7 +226,7 @@ function fillSkills() {
         },
         { name: 'React',
             pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg',
-            level: ['75'],
+            level: ['70'],
             description: 'JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов'
         },
         { name: 'VueJS',
@@ -241,12 +241,12 @@ function fillSkills() {
         },
         { name: 'NodeJS',
             pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg',
-            level: ['80'],
+            level: ['55'],
             description: 'Программная платформа, позволяющая использовать JavaScript как язык общего назначения вне окна браузера'
         },
         { name: 'Webpack',
             pictureUrl: '/wp-content/themes/doctorsyl_portfolio/img/webpack.svg',
-            level: ['75'],
+            level: ['70'],
             description: 'Наиболее мощный инструмент для проведения \"сборки\" frontend\'а веб-сайтов'
         },
         { name: 'Babel',
