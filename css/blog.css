@@ -26,3 +26,8 @@
 .blog-sidebar:hover .sidebar-arrow i {
     animation: arrow-reverse 0.4s linear 0s 1 forwards;
 }
+/* MAIN */
+.main .construction {
+    font-size: 18px;
+    text-align: center;
+}

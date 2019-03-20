@@ -22,6 +22,11 @@ Template Name: blog
             </a>
         </header>
     </div>
+    <section class="main">
+        <div class="construction">
+            <b>В данный момент блог находится в разработке</b>
+        </div>
+    </section>
 </main>
 
 
