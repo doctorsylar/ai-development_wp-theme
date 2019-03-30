@@ -230,7 +230,7 @@ function fillSkills() {
             description: 'JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов'
         },
         { name: 'VueJS',
-            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg',
+            pictureUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
             level: ['60'],
             description: 'JavaScript-фреймворк с открытым исходным кодом для создания пользовательских интерфейсов'
         },
