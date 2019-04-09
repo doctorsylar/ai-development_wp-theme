@@ -12,10 +12,7 @@
     >
     <meta name="google-site-verification" content="nc9WZs8kpAm7lB0AbJrsj3FYb9hh8IDApepiiCwS-sc" />
     <title><?php is_front_page() ? bloginfo('description') : wp_title(''); ?> | <?php bloginfo('name'); ?></title>
-    <?php
-    $templateName = get_page_template_slug();
-    $templateName = explode('-', substr($templateName,0, strlen($templateName) - 4));
-    $templateName = $templateName[count($templateName) - 1];
-    ?>
-    <link rel="stylesheet" href='<?=DS_ROOT . "/minified/$templateName.css"?>'>
     <?php wp_head(); ?>
+    <div class="preloader">
+        <div class="tetris"></div>
+    </div>

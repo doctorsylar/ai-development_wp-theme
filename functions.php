@@ -85,6 +85,7 @@ if(!is_admin()){
         wp_dequeue_style( 'admin-bar-min' );
     }
 }
+add_filter('show_admin_bar', '__return_false');
 // delete jQuery
 add_action('wp_enqueue_scripts', function () {
     wp_deregister_script('jquery');
@@ -256,3 +257,58 @@ function getPortfolioItems () {
     }
     return $portfolioItems;
 }
+// Styles and scripts
+function add_styles_scripts () {
+    if (get_page_uri() === 'ai-portfolio' || get_page_uri() === 'fake-index') {
+        wp_register_style('home', DS_ROOT . '/minified/index.css');
+        wp_enqueue_style('home');
+        wp_register_script('index', DS_ROOT . '/minified/index.js', false, false, true );
+        wp_enqueue_script('index');
+    }
+    else if (get_page_uri() === 'blog') {
+        wp_register_style('blog', DS_ROOT . '/minified/blog.css');
+        wp_enqueue_style('blog');
+        wp_register_script('blog_js', DS_ROOT . '/minified/blog.js', false, false, true );
+        wp_enqueue_script('blog_js');
+    }
+
+}
+add_action( 'wp_enqueue_scripts', 'add_styles_scripts');
+// Register shortcodes
+function printPortfolioItems() {
+    foreach (getPortfolioItems() as $item): ?>
+        <div class="portfolio-item animatedIn">
+            <div class="portfolio-item-inner">
+                <figure class="bubba-effect">
+                    <img src="<?= $item['thumbnail'] ?>" alt="<?= $item['title'] ?>">
+                    <figcaption>
+                        <h3><?= $item['title'] ?></h3>
+                        <p><?= $item['shortdesc'] ?></p>
+                    </figcaption>
+                </figure>
+                <div class="fullscreen-picture">
+                    <img src="" data-src="<?= $item['image'] ?>" alt="<?= $item['title'] ?>">
+                    <div class="picture-text">
+                        <h3 class="project-title">
+                            <?= $item['title'] ?>
+                        </h3>
+                        <h4>Описание проекта:</h4>
+                        <p class="project-about">
+                            <?= $item['about'] ?>
+                        </p>
+                        <h4>Что было сделано мной:</h4>
+                        <p class="project-done">
+                            <?= $item['donebyme'] ?>
+                        </p>
+                        <?php
+                        if ($item['link'] !== '') {
+                            echo "<a href={$item['link']} target='_blank'>Ссылка</a>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;
+}
+add_shortcode('print_portfolio', 'printPortfolioItems');

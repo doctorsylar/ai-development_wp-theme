@@ -9,7 +9,7 @@
 }
 .tetris {
     position: absolute;
-    background: url("/wp-content/themes/doctorsyl_portfolio/img/preloader.gif") no-repeat center center;
+    background: url("https://ai-development.ru/wp-content/uploads/2019/04/preloader.gif") no-repeat center center;
     height: 128px;
     width: 128px;
     top: calc(50% - 64px);

@@ -4,11 +4,6 @@ Template Name: home
 */
 ?>
 <?php get_header(); ?>
-<!--<body>-->
-
-<div class="preloader">
-    <div class="tetris"></div>
-</div>
 <section class="home" id="home">
     <div class="home-overlay"></div>
     <div class="heading">
