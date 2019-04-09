@@ -47,7 +47,7 @@ div.fadeInRight {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: url("/wp-content/themes/doctorsyl_portfolio/img/cover.jpg") fixed no-repeat;
+    background: url("https://ai-development.ru/wp-content/uploads/2019/04/cover.jpg") fixed no-repeat;
     background-size: cover;
     color: #ffffff;
 }

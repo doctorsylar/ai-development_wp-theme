@@ -16,7 +16,7 @@ function remove_admin_login_header() {
     remove_action('wp_head', '_admin_bar_bump_cb');
 }
 //Удаление древовидных комментариев
-function comments_clean_header_hook(){
+function comments_clean_header_hook() {
     wp_deregister_script( 'comment-reply' );
 }
 add_action('init','comments_clean_header_hook');

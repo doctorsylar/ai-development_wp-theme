@@ -1,6 +1,5 @@
 <footer>
     <ul class="socials-links">
-        <li><a href="#"><i class="fa fa-vk"></i></a></li>
         <li><a href="mailto:soul.evans.15@gmail.com"><i class="fa fa-google"></i></a></li>
         <li><a href="https://freelance.ru/doctorsylar" target="_blank"><i style="font-style: normal">FL</i></a></li>
         <li><a href="https://github.com/doctorsylar" target="_blank"><i class="fa fa-github"></i></a></li>
@@ -8,7 +7,7 @@
         <li><a href="tg://resolve?domain=DoctorSdoctor"><i class="fa fa-telegram"></i></a></li>
     </ul>
     <div class="copyright">
-        © 2018-<?=date('Y') ?> Andrey Izotov
+        © 2018-<?=date('Y') ?> by Andrey Izotov
     </div>
 </footer>
 
