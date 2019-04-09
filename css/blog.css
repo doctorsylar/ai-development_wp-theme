@@ -1,3 +1,31 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: Oswald, sans-serif;
+}
+.header-wrapper {
+    background: #000000 url("https://ai-development.ru/wp-content/uploads/2019/04/bg.jpg") center center no-repeat;
+    background-size: cover;
+    color: #ffffff;
+}
+.header-wrapper .header-inner {
+    background-color: rgba(0,0,0,.4);
+    padding: 15px;
+}
+.header-wrapper header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header-wrapper .logo {
+    padding: 20px;
+    border-radius: 20px;
+}
+.header-wrapper .logo img {
+    max-width: 100%;
+}
+.header-wrapper .heading span {
+    display: block;
+    text-align: right;
+}
 .blog-sidebar {
     position: fixed;
     min-height: 100vh;
@@ -30,4 +58,21 @@
 .main .construction {
     font-size: 18px;
     text-align: center;
+}
+
+@media (min-width: 576px) {
+    .header-wrapper header {
+        flex-direction: row;
+        align-items: unset;
+        justify-content: space-between;
+    }
+}
+@media (min-width: 768px) {
+
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+
 }
