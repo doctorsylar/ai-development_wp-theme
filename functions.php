@@ -90,131 +90,13 @@ add_filter('show_admin_bar', '__return_false');
 add_action('wp_enqueue_scripts', function () {
     wp_deregister_script('jquery');
 });
-// Advanced Custom Fields
-if( function_exists('acf_add_local_field_group')):
-    acf_add_local_field_group(array(
-        'key' => 'group_5be358b7483f1',
-        'title' => 'Portfolio-item',
-        'fields' => array(
-            array(
-                'key' => 'field_5be358dd39d7b',
-                'label' => 'Name',
-                'name' => 'name',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_5becbda03e777',
-                'label' => 'ShortDesc',
-                'name' => 'shortdesc',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_5be3590739d7c',
-                'label' => 'About',
-                'name' => 'about',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_5be3596539d7d',
-                'label' => 'DoneByMe',
-                'name' => 'donebyme',
-                'type' => 'text',
-                'instructions' => '',
-                'required' => 1,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-            ),
-            array(
-                'key' => 'field_5be3599739d7e',
-                'label' => 'Link',
-                'name' => 'link',
-                'type' => 'url',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => 0,
-                'wrapper' => array(
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ),
-                'default_value' => '',
-                'placeholder' => '',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'post',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-        'position' => 'normal',
-        'style' => 'default',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => 1,
-        'description' => '',
-    ));
-endif;
 // Register post type
 add_action( 'init', 'register_post_types' );
 function register_post_types(){
     add_theme_support('post-thumbnails');
 
     register_post_type('portfolio_item', array(
-        'label'  => null,
+        'label'  => 'portfolio-item',
         'labels' => array(
             'name'               => 'Portfolio-item', // основное название для типа записи
             'singular_name'      => 'Portfolio-item', // название для одной записи этого типа
@@ -229,12 +111,26 @@ function register_post_types(){
             'parent_item_colon'  => '', // для родителей (у древовидных типов)
             'menu_name'          => 'Portfolio-item', // название меню
         ),
-        'description'         => '',
-        'public'              => false,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'menu_icon'           => 'dashicons-format-image',
-        'supports'            => array('title','thumbnail') // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'description'           => '',
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'delete_with_user'      => false,
+        'show_in_rest'          => true,
+        'rest_base'             => "",
+        'rest_controller_class' => "WP_REST_Posts_Controller",
+        'has_archive'           => false,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => false,
+        'exclude_from_search'   => false,
+        'capability_type'       => "post",
+        'map_meta_cap'          => true,
+        'hierarchical'          => false,
+        'rewrite'               => array( "slug" => "portfolio_item", "with_front" => false ),
+        'query_var'             => true,
+        'menu_icon'             => 'dashicons-format-image',
+        'supports'              => array('title','thumbnail'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        '_builtin'              => false
     ) );
 }
 
@@ -259,7 +155,7 @@ function getPortfolioItems () {
 }
 // Styles and scripts
 function add_styles_scripts () {
-    if (get_page_uri() === 'ai-portfolio' || get_page_uri() === 'fake-index') {
+    if (get_page_uri() === 'ai-portfolio' || get_page_uri() === 'test-index-page') {
         wp_register_style('home', DS_ROOT . '/minified/index.css');
         wp_enqueue_style('home');
         wp_register_script('index', DS_ROOT . '/minified/index.js', false, false, true );
@@ -274,41 +170,17 @@ function add_styles_scripts () {
 
 }
 add_action( 'wp_enqueue_scripts', 'add_styles_scripts');
-// Register shortcodes
-function printPortfolioItems() {
-    foreach (getPortfolioItems() as $item): ?>
-        <div class="portfolio-item animatedIn">
-            <div class="portfolio-item-inner">
-                <figure class="bubba-effect">
-                    <img src="<?= $item['thumbnail'] ?>" alt="<?= $item['title'] ?>">
-                    <figcaption>
-                        <h3><?= $item['title'] ?></h3>
-                        <p><?= $item['shortdesc'] ?></p>
-                    </figcaption>
-                </figure>
-                <div class="fullscreen-picture">
-                    <img src="" data-src="<?= $item['image'] ?>" alt="<?= $item['title'] ?>">
-                    <div class="picture-text">
-                        <h3 class="project-title">
-                            <?= $item['title'] ?>
-                        </h3>
-                        <h4>Описание проекта:</h4>
-                        <p class="project-about">
-                            <?= $item['about'] ?>
-                        </p>
-                        <h4>Что было сделано мной:</h4>
-                        <p class="project-done">
-                            <?= $item['donebyme'] ?>
-                        </p>
-                        <?php
-                        if ($item['link'] !== '') {
-                            echo "<a href={$item['link']} target='_blank'>Ссылка</a>";
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach;
+// Registering sidebar
+add_action( 'widgets_init', 'register_my_widgets' );
+function register_my_widgets(){
+    register_sidebar( array(
+        'name'          => 'sidebar-blog',
+        'id'            => 'sidebar-blog',
+        'description'   => '',
+        'class'         => '',
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
+    ) );
 }
-add_shortcode('print_portfolio', 'printPortfolioItems');

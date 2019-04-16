@@ -3,45 +3,27 @@
 Template Name: blog
 */
 ?>
-<?php get_header(); ?>
+<?php get_header('blog'); ?>
 
-<aside class="blog-sidebar">
-    <div class="sidebar-arrow">
-        <i class="fa fa-arrow-left"></i>
-    </div>
-    <div class="sidebar-content">
+<div class="container">
+    <main class="main-content col-12 col-md-9 col-lg-10">
+        <section class="top-message">
+            <?php
+            the_post();
+            the_content();
+            ?>
+        </section>
+        <section class="posts">
 
-    </div>
-</aside>
-<main>
-    <div class="header-wrapper">
-        <div class="header-inner">
-            <header class="container">
-                <div class="logo">
-                    <a href="<?= get_home_url()?>" title="Главная страница">
-                        <img src="/wp-content/themes/doctorsyl_portfolio/img/blog/logo_blog.svg" alt="logo_blog">
-                    </a>
-                </div>
-                <div class="heading">
-                    <h1>
-                        <span>Блог о</span>
-                        <span>веб-разработке</span>
-                        <span>и фрилансе</span>
-                    </h1>
-                </div>
-            </header>
-        </div>
-    </div>
-    <section class="main container">
-<!--        <div class="construction">-->
-<!--            <b>В данный момент блог находится в разработке</b>-->
-<!--        </div>-->
+        </section>
+    </main>
+    <aside class="blog-sidebar col-md-3 col-lg-2">
         <?php
-        the_post();
-        the_content();
+        get_sidebar();
         ?>
-    </section>
-</main>
+    </aside>
+</div>
+
 
 
 <?php get_footer(); ?>
