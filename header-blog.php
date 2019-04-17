@@ -32,7 +32,7 @@
         <div class="mobile-bar">
             <a href="<?=get_home_url() ?>" title="Домой">
                 <i class="fa fa-home fa-2x"></i>
-                Домой
+                <span>Домой</span>
             </a>
             <button type="button" class="mobile-nav-toggler">
                 <i class="fa fa-bars fa-2x"></i>

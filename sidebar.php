@@ -1,5 +1,7 @@
 <div class="sidebar-arrow">
-    <i class="fa fa-arrow-left"></i>
+    <button type="button" class="mobile-nav-toggler">
+        <i class="fa fa-arrow-right fa-2x"></i>
+    </button>
 </div>
 <div class="sidebar-content">
     sidebar content
