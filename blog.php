@@ -14,7 +14,18 @@ Template Name: blog
             ?>
         </section>
         <section class="posts">
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+            <div class="post-item">
+                <h2><?php the_title(); ?></h2>
+                <p class="cut-text">
+                    <?php the_excerpt_rss(); ?>
+                </p>
+            </div>
 
+
+            <?php endwhile; else: ?>
+                <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+            <?php endif; ?>
         </section>
     </main>
     <aside class="blog-sidebar col-md-3 col-lg-2">

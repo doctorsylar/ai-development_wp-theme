@@ -16,7 +16,7 @@
         <div class="header-inner">
             <div class="container header-content">
                 <div class="logo">
-                    <a href="<?= get_home_url()?>" title="Главная страница">
+                    <a href="<?=get_home_url() ?>" title="Главная страница">
                         <img src="/wp-content/themes/doctorsyl_portfolio/img/blog/logo_blog.svg" alt="logo_blog">
                     </a>
                 </div>
@@ -28,5 +28,14 @@
                     </h1>
                 </div>
             </div>
+        </div>
+        <div class="mobile-bar">
+            <a href="<?=get_home_url() ?>" title="Домой">
+                <i class="fa fa-home fa-2x"></i>
+                Домой
+            </a>
+            <button type="button" class="mobile-nav-toggler">
+                <i class="fa fa-bars fa-2x"></i>
+            </button>
         </div>
     </header>
