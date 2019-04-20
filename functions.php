@@ -161,13 +161,12 @@ function add_styles_scripts () {
         wp_register_script('index', DS_ROOT . '/minified/index.js', false, false, true );
         wp_enqueue_script('index');
     }
-    else if (get_page_uri() === 'blog') {
+    else if (get_page_uri() === 'blog' || get_post_type() === 'post') {
         wp_register_style('blog', DS_ROOT . '/minified/blog.css');
         wp_enqueue_style('blog');
         wp_register_script('blog_js', DS_ROOT . '/minified/blog.js', false, false, true );
         wp_enqueue_script('blog_js');
     }
-
 }
 add_action( 'wp_enqueue_scripts', 'add_styles_scripts');
 // Registering sidebar

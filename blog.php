@@ -5,34 +5,47 @@ Template Name: blog
 ?>
 <?php get_header('blog'); ?>
 
-<div class="container">
-    <main class="main-content col-12 col-md-9 col-lg-10">
-        <section class="top-message">
+<div class="container main-container">
+    <div class="row">
+        <main class="main-content col-12 col-md-9">
+            <section class="top-message">
+                <?php
+                the_post();
+                the_content();
+                ?>
+            </section>
+            <section class="posts">
+                <?php
+                $posts = get_posts([
+
+                ]);
+                foreach ($posts as $post): ?>
+                    <article class="post-item">
+                        <div class="post-header">
+                            <span>Andrey Izotov</span>
+                            <span><?=$post->post_date; ?></span>
+                            <h2><a href="<?php the_permalink(); ?>"><?=$post->post_title; ?></a></h2>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-text">
+                                <p><?=$post->post_excerpt; ?></p>
+                            </div>
+                        </div>
+                    </article>
+
+
+
+                <?php endforeach; ?>
+<!--                --><?php //echo sizeof($posts); ?>
+
+            </section>
+        </main>
+        <aside class="blog-sidebar col-md-3">
             <?php
-            the_post();
-            the_content();
+            get_sidebar();
             ?>
-        </section>
-        <section class="posts">
-            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-            <div class="post-item">
-                <h2><?php the_title(); ?></h2>
-                <p class="cut-text">
-                    <?php the_excerpt_rss(); ?>
-                </p>
-            </div>
-
-
-            <?php endwhile; else: ?>
-                <p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-            <?php endif; ?>
-        </section>
-    </main>
-    <aside class="blog-sidebar col-md-3 col-lg-2">
-        <?php
-        get_sidebar();
-        ?>
-    </aside>
+        </aside>
+    </div>
 </div>
 
 

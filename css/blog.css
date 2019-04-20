@@ -13,11 +13,12 @@ h1, h2, h3, h4, h5, h6 {
 .header-wrapper .header-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 }
 .header-wrapper .logo {
     padding: 20px;
     border-radius: 20px;
+    display: none;
 }
 .header-wrapper .logo img {
     max-width: 100%;
@@ -35,8 +36,23 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
     padding: 8px 15px;
 }
-.header-wrapper .mobile-bar .mobile-nav-toggler {
+.mobile-nav-toggler {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+}
+.mobile-nav-toggler,
+.mobile-bar a {
+    opacity: 0.6;
+    transition: opacity 0.2s linear;
+}
+.mobile-nav-toggler:hover,
+.mobile-bar a:hover {
+    opacity: 1;
+}
+.mobile-bar span {
+    font-size: 20px;
 }
 /* sidebar */
 .blog-sidebar {
@@ -55,16 +71,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 .blog-sidebar .sidebar-arrow i {
     color: #ffffff;
-    padding: 7px 10px;
+    padding: 7px 4px;
     cursor: pointer;
 }
-.blog-sidebar:hover .sidebar-arrow i {
-    animation: arrow-reverse 0.4s linear 0s 1 forwards;
-}
 /* MAIN */
+.main-container {
+    flex-grow: 1;
+}
+.main-container > .row {
+    height: 100%;
+}
 .main .construction {
     font-size: 18px;
     text-align: center;
+}
+.main .post-item {
+    margin: 10px 15px;
+    box-shadow: 10px 10px 10px 5px #000000;
 }
 
 @media (min-width: 576px) {
@@ -73,12 +96,28 @@ h1, h2, h3, h4, h5, h6 {
         align-items: unset;
         justify-content: space-between;
     }
-    .header-wrapper .mobile-bar {
-        display: none;
+    .header-wrapper .logo {
+        display: block;
     }
 }
 @media (min-width: 768px) {
-
+    .header-wrapper .mobile-bar {
+        display: none;
+    }
+    .blog-sidebar {
+        position: static;
+        min-height: 100%;
+        right: unset;
+        top: unset;
+        width: unset;
+        background-color: #bbbbbb;
+        color: #ffffff;
+        transition:unset;
+        z-index: 2;
+    }
+    .blog-sidebar .sidebar-arrow {
+        display: none;
+    }
 }
 @media (min-width: 992px) {
 
