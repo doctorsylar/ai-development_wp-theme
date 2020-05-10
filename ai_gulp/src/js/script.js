@@ -131,24 +131,26 @@ $(function () {
 
     $('.contact-form').submit(function (event) {
         event.preventDefault();
-        let name = event.target[0].value.trim();
-        let email = event.target[1].value.trim();
-        let message = event.target[2].value.trim();
-        if (name !== '' && email !== '' && message !== '') {
-            $.ajax(event.target.action, {
-                data: {
-                    name: event.target[0].value,
-                    email: event.target[1].value,
-                    message: event.target[2].value
-                },
-                success: function () {
-                    $('.contact-form').fadeOut(1000, function () {
-                        $('.success-form-sending').slideDown(300);
-                    });
-
-                }
-            });
+        let form = $(this);
+        let values = {};
+        let fieldsArray = $(this).serializeArray();
+        for (let input of fieldsArray) {
+            values[input['name']] = input['value'];
         }
+        form.find('button[type=submit]').prop('disabled', true);
+        $.ajax({
+            type: 'POST',
+            url: window.wp_data.ajax_url,
+            data: {
+                action: form.attr('action'),
+                item: values
+            },
+            success: function (response) {
+                $('.contact-form').fadeOut(1000, function () {
+                    $('.success-form-sending').slideDown(300);
+                });
+            }
+        });
     });
     $(document).keydown(function(event) {
         if( event.keyCode === 27 ) {

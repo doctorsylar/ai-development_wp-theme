@@ -191,18 +191,18 @@ Template Name: home
     <section id="contact">
         <h2>Контакты</h2>
         <div class="underline"></div>
-        <form action="/wp-content/themes/doctorsyl_portfolio/php/send-email.php" class="contact-form">
+        <form action="contact" class="contact-form">
             <p class="contact-description">
                 Пожалуйста, оставьте свои контактные данные и сообщение, чтобы я мог с Вами как можно скорее связаться.
             </p>
             <div class="name animatedIn">
-                <input type="text" placeholder="Ваше имя..." required>
+                <input type="text" name="name" placeholder="Ваше имя..." required>
             </div>
             <div class="email animatedIn">
-                <input type="email" placeholder="Ваш email..." required>
+                <input type="email" name="email" placeholder="Ваш email..." required>
             </div>
             <div class="message animatedIn">
-                <textarea rows="10" placeholder="Ваше сообщение..." required></textarea>
+                <textarea rows="10" name="message" placeholder="Ваше сообщение..." required></textarea>
             </div>
             <div class="submit animatedIn">
                 <input type="submit" class="submit" value="Отправить">

@@ -3,7 +3,44 @@
 // PHP variables
 define('DS_ROOT', get_template_directory_uri());
 define('temp_dir', get_template_directory_uri());
+// Подключение ссылки на AJAX-обработчик
+function variables(){
+    global $post;
+    $variables = array (
+        "ajax_url" => admin_url("admin-ajax.php"),
+    );
+    echo "<script type='text/javascript'>window.wp_data = ".json_encode($variables)."</script>";
+}
+add_action("wp_head", "variables");
 
+// ---------------------------------------------------------
+// Получение данных через AJAX
+function contact_callback() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $managerEmail = 'soul.evans.15@gmail.com';
+        $headers = array(
+            "From: AI-development <no-reply@ai-development.ru>",
+            "content-type: text/html"
+        );
+        $object = $_POST['item'];
+        $message =
+            "Заявка из формы обратной связи<br>" .
+            "<br>" .
+            "Имя: " . htmlspecialchars( trim( $object['name'] ) ) . "<br>" .
+            "E-mail: " . htmlspecialchars( trim( $object['email'] ) ) . "<br>" .
+            "Сообщение: " . htmlspecialchars( trim( $object['message'] ) ) . "<br>";
+        echo wp_mail(
+            $managerEmail,
+            'Заявка с сайта AI-development.ru',
+            $message,
+            $headers
+        );
+    }
+    wp_die();
+}
+//
+add_action( "wp_ajax_contact", "contact_callback" );
+add_action( "wp_ajax_nopriv_contact", "contact_callback" );
 //Удалить Query Strings
 function _remove_script_version( $src ){
     $parts = explode( '?ver', $src );
