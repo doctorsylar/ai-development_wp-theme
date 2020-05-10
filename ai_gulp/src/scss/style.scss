@@ -1,0 +1,23 @@
+// FONTS
+//@import "../fonts/Circe/stylesheet.css";
+// VARIABLES
+@import "./variables/module";
+// FUNCTIONS
+@import "./functions/module";
+// NORMALIZE
+@import "./../../node_modules/reset-css/sass/reset";
+// BOOTSTRAP
+@import './css/bootstrap-grid.min.css';
+// LIBS
+//@import "./../../node_modules/font-awesome/css/font-awesome.css";
+//@import "./../../node_modules/jquery-nice-select/css/nice-select.css";
+//@import "./../../node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css";
+//@import "./../../node_modules/ion-rangeslider/css/ion.rangeSlider.min.css";
+//@import "./../../node_modules/slick-slider/slick/slick-theme";
+// BASE
+@import "./base/module";
+// COMPONENTS
+@import "./components/module";
+// SEPARATED PAGES STYLES
+@import "./pages/home";
+@import "./pages/blog";

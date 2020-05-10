@@ -1,0 +1,14 @@
+* {
+  outline: none;
+  box-sizing: border-box;
+  margin: 0;
+}
+html, body {
+  font-size: 16px;
+  line-height: 150%;
+}
+body {
+  &.ov-hidden {
+    overflow: hidden;
+  }
+}
