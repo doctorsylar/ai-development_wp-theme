@@ -211,6 +211,9 @@ Template Name: home
         <h3 class="success-form-sending">Спасибо за Ваше сообщение! <br>
             Я постараюсь связаться с Вами в ближайшее время!</h3>
     </section>
+<!--    <section id="test-contact">-->
+<!--        --><?php //echo do_shortcode('[contact-form-7 id="190" title="Контактная форма 1"]'); ?>
+<!--    </section>-->
 </main>
 
 

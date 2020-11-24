@@ -125,9 +125,10 @@ if(!is_admin()){
 }
 add_filter('show_admin_bar', '__return_false');
 // delete jQuery
-add_action('wp_enqueue_scripts', function () {
-    wp_deregister_script('jquery');
-});
+//add_action('wp_enqueue_scripts', function () {
+//    wp_deregister_script('jquery');
+//});
+add_theme_support( 'title-tag' );
 // Register post type
 add_action( 'init', 'register_post_types' );
 function register_post_types(){
@@ -191,23 +192,6 @@ function getPortfolioItems () {
     }
     return $portfolioItems;
 }
-// Styles and scripts
-//function add_styles_scripts () {
-//    if (get_page_uri() === 'ai-portfolio' || get_page_uri() === 'test-index-page') {
-//        wp_register_style('home', DS_ROOT . '/minified/index.css');
-//        wp_enqueue_style('home');
-//        wp_register_script('index', DS_ROOT . '/minified/index.js', false, false, true );
-//        wp_enqueue_script('index');
-//    }
-//    else if (get_page_uri() === 'blog' || get_post_type() === 'post') {
-//        wp_register_style('blog', DS_ROOT . '/minified/blog.css');
-//        wp_enqueue_style('blog');
-//        wp_register_script('blog_js', DS_ROOT . '/minified/blog.js', false, false, true );
-//        wp_enqueue_script('blog_js');
-//    }
-//}
-//add_action( 'wp_enqueue_scripts', 'add_styles_scripts');
-
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('main-style', temp_dir . '/style.css');
     wp_enqueue_style('font-awesome', temp_dir . '/fonts/font-awesome/stylesheet.css');
