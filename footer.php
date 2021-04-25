@@ -7,7 +7,7 @@
         <li><a href="tg://resolve?domain=DoctorSdoctor"><i class="fa fa-telegram"></i></a></li>
     </ul>
     <div class="copyright">
-        © 2018-<?=date('Y') ?> by Andrey Izotov
+        © 2018-<?=date('Y') ?> by AI-Development
     </div>
 </footer>
 

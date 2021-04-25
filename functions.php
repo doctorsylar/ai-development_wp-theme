@@ -85,31 +85,31 @@ function disable_emojis_tinymce( $plugins ) {
     }
 }
 //Удаление WP-JSON из кода WordPress
-remove_action( 'wp_head', 'rest_output_link_wp_head');
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links');
-remove_action( 'template_redirect', 'rest_output_link_header', 11);
+//remove_action( 'wp_head', 'rest_output_link_wp_head');
+//remove_action( 'wp_head', 'wp_oembed_add_discovery_links');
+//remove_action( 'template_redirect', 'rest_output_link_header', 11);
 //Удаление WLWManifest из кода WordPress
 remove_action('wp_head', 'wlwmanifest_link');
 // Удаление технической страницы wp-json
 // Отключаем сам REST API
-add_filter('rest_enabled', '__return_false');
+//add_filter('rest_enabled', '__return_false');
 // Отключаем события REST API
-remove_action( 'init', 'rest_api_init' );
-remove_action( 'rest_api_init', 'rest_api_default_filters', 10);
-remove_action( 'parse_request', 'rest_api_loaded' );
+//remove_action( 'init', 'rest_api_init' );
+//remove_action( 'rest_api_init', 'rest_api_default_filters', 10);
+//remove_action( 'parse_request', 'rest_api_loaded' );
 // Отключаем Embeds связанные с REST API
-remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10);
+//remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+//remove_filter( 'rest_pre_serve_request', '_oembed_rest_pre_serve_request', 10);
 // Отключаем фильтры REST API
-remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10);
-remove_action( 'template_redirect', 'rest_output_link_header', 11);
-remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
-remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
-remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
+//remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
+//remove_action( 'wp_head', 'rest_output_link_wp_head', 10);
+//remove_action( 'template_redirect', 'rest_output_link_header', 11);
+//remove_action( 'auth_cookie_malformed', 'rest_cookie_collect_status' );
+//remove_action( 'auth_cookie_expired', 'rest_cookie_collect_status' );
+//remove_action( 'auth_cookie_bad_username', 'rest_cookie_collect_status' );
+//remove_action( 'auth_cookie_bad_hash', 'rest_cookie_collect_status' );
+//remove_action( 'auth_cookie_valid', 'rest_cookie_collect_status' );
+//remove_filter( 'rest_authentication_errors', 'rest_cookie_check_errors', 100 );
 //Удаление мета-тега generator
 remove_action('wp_head', 'wp_generator');
 //Удаление ссылки на RSD
@@ -175,15 +175,15 @@ function register_post_types(){
 
 function getPortfolioItems () {
     $args = array(
-        'numberposts' => 8,
+        'posts_per_page' => 8,
         'orderby'     => 'date',
         'order'       => 'DESC',
         'post_type'   => 'portfolio_item',
     );
 
     $portfolioItems = [];
-
-    foreach (get_posts($args) as $post) {
+    $query =  new WP_Query($args);
+    foreach ($query->posts as $post) {
         $item = get_fields($post -> ID);
         $item['title'] = $post -> post_title;
         $item['thumbnail'] = get_the_post_thumbnail_url($post -> ID, 'medium');
@@ -223,3 +223,18 @@ function register_my_widgets(){
         'after_title'   => '',
     ) );
 }
+// Add defer to script
+function add_defer_attribute( $tag, $handle ) {
+    $handles = array(
+        'main-script'
+    );
+
+    foreach( $handles as $defer_script) {
+        if ( $defer_script === $handle ) {
+            return str_replace( ' src', ' defer="defer" src', $tag );
+        }
+    }
+
+    return $tag;
+}
+add_filter( 'script_loader_tag', 'add_defer_attribute', 10, 2 );
