@@ -17,24 +17,41 @@ add_action("wp_head", "variables");
 // Получение данных через AJAX
 function contact_callback() {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $managerEmail = 'soul.evans.15@gmail.com';
-        $headers = array(
-            "From: AI-development <no-reply@ai-development.ru>",
-            "content-type: text/html"
-        );
-        $object = $_POST['item'];
-        $message =
-            "Заявка из формы обратной связи<br>" .
-            "<br>" .
-            "Имя: " . htmlspecialchars( trim( $object['name'] ) ) . "<br>" .
-            "E-mail: " . htmlspecialchars( trim( $object['email'] ) ) . "<br>" .
-            "Сообщение: " . htmlspecialchars( trim( $object['message'] ) ) . "<br>";
-        echo wp_mail(
-            $managerEmail,
-            'Заявка с сайта AI-development.ru',
-            $message,
-            $headers
-        );
+        $postdata = http_build_query(["secret"=>"6LeQcdwaAAAAAASSAWw_7Za0TXlKvo5OoonsNRib",
+            "response"=>$_POST['item']['captcha']]);
+        $opts = ['http' =>
+            [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            ]
+        ];
+        $context  = stream_context_create($opts);
+        $result = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+        $check = json_decode($result);
+        if ($check->success) {
+            $managerEmail = 'soul.evans.15@gmail.com';
+            $headers = array(
+                "From: AI-development <no-reply@ai-development.ru>",
+                "content-type: text/html"
+            );
+            $object = $_POST['item'];
+            $message =
+                "Заявка из формы обратной связи<br>" .
+                "<br>" .
+                "Имя: " . htmlspecialchars( trim( $object['name'] ) ) . "<br>" .
+                "E-mail: " . htmlspecialchars( trim( $object['email'] ) ) . "<br>" .
+                "Сообщение: " . htmlspecialchars( trim( $object['message'] ) ) . "<br>";
+            echo wp_mail(
+                $managerEmail,
+                'Заявка с сайта AI-development.ru',
+                $message,
+                $headers
+            );
+        }
+        else {
+            echo 0;
+        }
     }
     wp_die();
 }
@@ -175,7 +192,7 @@ function register_post_types(){
 
 function getPortfolioItems () {
     $args = array(
-        'posts_per_page' => 8,
+        'posts_per_page' => -1,
         'orderby'     => 'date',
         'order'       => 'DESC',
         'post_type'   => 'portfolio_item',
@@ -193,7 +210,10 @@ function getPortfolioItems () {
     return $portfolioItems;
 }
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('main-style', temp_dir . '/style.css');
+    $scriptVer = '1.3.6.3';
+    wp_enqueue_style('main-style',
+        temp_dir . '/style.css',
+        Null, $scriptVer);
     wp_enqueue_style('font-awesome', temp_dir . '/fonts/font-awesome/stylesheet.css');
     wp_enqueue_style('font1', 'https://fonts.googleapis.com/css?family=Oswald|Raleway');
 //    wp_enqueue_script('ym',
@@ -204,8 +224,13 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('main-script',
         temp_dir . '/js/script.js',
         Null,
-        Null,
+        $scriptVer,
         true);
+    wp_enqueue_script('recapcha-script',
+        'https://www.google.com/recaptcha/api.js',
+        Null,
+        Null,
+        false);
 });
 
 

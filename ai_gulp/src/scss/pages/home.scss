@@ -433,6 +433,9 @@ main {
 #portfolio .portfolio-item h3{
   font-size: 20px;
 }
+#portfolio .portfolio-item .picture-text h3 {
+  font-size: 28px;
+}
 
 #portfolio .portfolio-item figure {
   position: relative;
@@ -598,6 +601,8 @@ main {
 }
 #portfolio .portfolio-item .fullscreen-picture .picture-text h4 {
   color: #ccf0ff;
+  margin-bottom: 8px;
+  margin-top: 14px;
 }
 #portfolio .portfolio-item .fullscreen-picture .picture-text:hover {
   opacity: 1 !important;
@@ -744,6 +749,11 @@ main {
 #contact .contact-form > div {
   opacity: 0;
 }
+#contact .contact-form .g-recaptcha {
+  opacity: 1;
+  margin-bottom: 25px;
+}
+
 #contact .contact-form .contact-description {
   margin-bottom: 30px;
   font-family: 'Raleway', sans-serif;

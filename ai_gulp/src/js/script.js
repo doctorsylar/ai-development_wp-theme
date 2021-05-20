@@ -138,6 +138,8 @@ $(function () {
             values[input['name']] = input['value'];
         }
         form.find('button[type=submit]').prop('disabled', true);
+        var captcha = grecaptcha.getResponse();
+        values['captcha'] = captcha;
         $.ajax({
             type: 'POST',
             url: window.wp_data.ajax_url,
@@ -146,9 +148,14 @@ $(function () {
                 item: values
             },
             success: function (response) {
-                $('.contact-form').fadeOut(1000, function () {
-                    $('.success-form-sending').slideDown(300);
-                });
+                if (response == 1) {
+                    $('.contact-form').fadeOut(1000, function () {
+                        $('.success-form-sending').slideDown(300);
+                    });
+                }
+                else {
+                    console.log(response);
+                }
             }
         });
     });

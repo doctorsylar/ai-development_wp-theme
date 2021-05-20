@@ -24,7 +24,7 @@ Template Name: home
         </div>
         <nav class="header-menu horizontal-menu">
             <ul>
-                <li class="link-home"><a href="<?=get_site_url() . '/blog'?>"><i class="fa fa-home"></i>Блог</a></li>
+<!--                <li class="link-home"><a href="--><?//=get_site_url() . '/blog'?><!--"><i class="fa fa-home"></i>Блог</a></li>-->
                 <li class="link-services"><a class="anchor" href="#services"><i class="fa fa-files-o"></i>Услуги</a></li>
                 <li class="link-portfolio"><a class="anchor" href="#portfolio"><i class="fa fa-book"></i>Портфолио</a></li>
                 <li class="link-skills"><a class="anchor" href="#skills"><i class="fa fa-star"></i>Навыки</a></li>
@@ -38,7 +38,7 @@ Template Name: home
     </div>
     <nav class="header-menu vertical-menu">
         <ul>
-            <li class="link-home"><a href="<?=get_site_url() . '/blog'?>"><i class="fa fa-home"></i>Блог</a></li>
+<!--            <li class="link-home"><a href="--><?//=get_site_url() . '/blog'?><!--"><i class="fa fa-home"></i>Блог</a></li>-->
             <li class="link-services"><a class="anchor" href="#services"><i class="fa fa-files-o"></i>Услуги</a></li>
             <li class="link-portfolio"><a class="anchor" href="#portfolio"><i class="fa fa-book"></i>Портфолио</a></li>
             <li class="link-skills"><a class="anchor" href="#skills"><i class="fa fa-star"></i>Навыки</a></li>
@@ -204,6 +204,7 @@ Template Name: home
             <div class="message animatedIn">
                 <textarea rows="10" name="message" placeholder="Ваше сообщение..." required></textarea>
             </div>
+            <div class="g-recaptcha" data-sitekey="6LeQcdwaAAAAABo8ftLdB2QFg2KgG52dzlImBLOe"></div>
             <div class="submit animatedIn">
                 <input type="submit" class="submit" value="Отправить">
             </div>
