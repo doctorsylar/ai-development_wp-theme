@@ -17,7 +17,7 @@ add_action("wp_head", "variables");
 // Получение данных через AJAX
 function contact_callback() {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $postdata = http_build_query(["secret"=>"6LeQcdwaAAAAAASSAWw_7Za0TXlKvo5OoonsNRib",
+        $postdata = http_build_query(["secret"=>"secret_key",
             "response"=>$_POST['item']['captcha']]);
         $opts = ['http' =>
             [
