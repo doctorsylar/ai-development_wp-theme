@@ -1,0 +1,19 @@
+.portfolio-item-container {
+  .portfolio-arrow {
+    z-index: 1;
+    position: fixed;
+    height: 50px;
+    width: 40px;
+    background-color: transparent;
+    border: 1px solid #222;
+    line-height: 45px;
+    top: calc(50vh - 25px);
+    text-align: center;
+    &.portfolio-prev {
+      left: 0;
+    }
+    &.portfolio-next {
+      right: 0;
+    }
+  }
+}
